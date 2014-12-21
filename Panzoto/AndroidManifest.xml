@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.panzoto.android"
+    android:versionCode="7"
+    android:versionName="1.06" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/CustomActionBarTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".DisplayMessageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_display_message"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/FullscreenTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.panzoto.android.MainActivity" />
+        </activity>
+        <activity
+            android:name=".BuyGunActivity"
+            android:label="@string/title_activity_buy_gun"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.panzoto.android.MainActivity" />
+        </activity>
+        <activity
+            android:name=".BuyCarActivity"
+            android:label="@string/title_activity_buy_car" >
+        </activity>
+        <activity
+            android:name=".BuyBulletsActivity"
+            android:label="@string/title_activity_buy_bullets" >
+        </activity>
+        <activity
+            android:name=".JoinFamilyActivity"
+            android:label="@string/title_activity_join_family" >
+        </activity>
+        <activity
+            android:name=".PlayDiceActivity"
+            android:label="@string/title_activity_play_dice" >
+        </activity>
+        <activity
+            android:name=".GambleFragment"
+            android:label="@string/title_activity_gamble" >
+        </activity>
+        <activity
+            android:name=".HorseRacingActivity"
+            android:label="@string/title_activity_horse_racing" >
+        </activity>
+        <activity
+            android:name=".ShowHorseActivity"
+            android:label="@string/title_activity_show_horse" >
+        </activity>
+    </application>
+
+</manifest>

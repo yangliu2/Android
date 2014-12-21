@@ -1,0 +1,8 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    
+    <color name="tab_highlight">#6699FF</color>
+    <color name="tab_bar_background">#CCFFFF</color>
+
+</resources>

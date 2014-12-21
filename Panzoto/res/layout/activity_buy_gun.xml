@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".BuyGunActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/buy_handgun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/buy_handgun" />
+
+        <Button
+            android:id="@+id/buy_tommy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/buy_tommy" />
+
+        <Button
+            android:id="@+id/buy_sniper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/buy_sniper" />
+
+        <Button
+            android:id="@+id/buy_bullets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/buy_bullets" />
+    </LinearLayout>
+
+</ScrollView>

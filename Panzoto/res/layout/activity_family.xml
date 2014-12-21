@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/look_family"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/look_family" />
+
+        <Button
+            android:id="@+id/join_family"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/join_family" />
+
+        <Button
+            android:id="@+id/list_skill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/list_skill" />
+
+        <Button
+            android:id="@+id/practice_skill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/practice_skill" />
+
+        <Button
+            android:id="@+id/assassination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/assassination" />
+
+        <Button
+            android:id="@+id/smuggling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/smuggling" />
+
+        <Button
+            android:id="@+id/extortion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/extortion" />
+
+        <Button
+            android:id="@+id/prostitution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/prostitution" />
+
+        <Button
+            android:id="@+id/kidnaping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/kidnaping" />
+
+        <Button
+            android:id="@+id/humanTrafficking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/humanTrafficking" />
+
+        <Button
+            android:id="@+id/drugDealing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/drugDealing" />
+
+    </LinearLayout>
+
+</ScrollView>

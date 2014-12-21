@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Panzoto</string>
+    <string name="edit_message">Your question</string>
+    <string name="button_send">Send</string>
+    <string name="button_rob_a_store">Rob a store</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_display_message">Message</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="rob_a_store">Rob a store</string>
+    <string name="labor">Work for money</string>
+    <string name="do_favor">Do a favor</string>
+    <string name="buy_blood">Go to the hosptial</string>
+    <string name="buy_guns">Visit gun shop</string>
+    <string name="buy_handgun">Get a pistol</string>
+    <string name="buy_tommy">Get a tommy</string>
+    <string name="buy_sniper">Get a sniper rifle</string>
+    <string name="buy_bullets">Buy bullets</string>
+    <string name="buy_cars">Get a ride</string>
+    <string name="buy_civic">Civic</string>
+    <string name="buy_hummer">Hummer</string>
+    <string name="buy_bike">Bike</string>
+    <string name="buy_truck">Pickup</string>
+    <string name="heist">Heist</string>
+    <string name="look_family">Existing Families</string>
+    <string name="join_family">Join Family</string>
+    <string name="list_skill">List Skills</string>
+    <string name="practice_skill">Practice Skills</string>
+    <string name="assassination">Assassination</string>
+    <string name="smuggling">Smuggling</string>
+    <string name="extortion">Extortion</string>
+    <string name="prostitution">Prostitution</string>
+    <string name="kidnaping">Kidnaping</string>
+    <string name="humanTrafficking">Human Trafficking</string>
+    <string name="drugDealing">Drug Dealing</string>
+    <string name="play_dice">Play Dice</string>
+    <string name="roll_dice">Roll</string>
+    <string name="horseRacing">Bet on horse</string>
+    <string name="race_horse">Race</string>
+    <string name="check_status">Check status</string>
+    <string name="profile">Profile</string>
+    <string name="title_activity_actions">Actions</string>
+    <string name="new_profile">Create a profile</string>
+    <string name="add_money">Let it rain</string>
+    <string name="title_activity_display">DisplayActivity</string>
+    <string name="title_activity_buy_gun">BuyGun</string>
+    <string name="title_activity_buy_car">BuyCar</string>
+    <string name="title_activity_buy_bullets">BuyBullets</string>
+    <string name="title_activity_join_family">JoinFamily</string>
+    <string name="title_activity_play_dice">PlayDice</string>
+    <string name="title_activity_gamble">GambleActivity</string>
+    <string name="title_activity_horse_racing">HorseRacing</string>
+    <string name="title_activity_show_horse">ShowHorse</string>
+
+</resources>

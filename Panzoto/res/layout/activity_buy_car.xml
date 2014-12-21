@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/buy_civic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/buy_civic" />
+
+        <Button
+            android:id="@+id/buy_hummer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/buy_hummer" />
+
+        <Button
+            android:id="@+id/buy_bike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/buy_bike" />
+
+        <Button
+            android:id="@+id/buy_truck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/abc_action_bar_subtitle_text_size"
+            android:background="@drawable/square_shape_drawable"
+            android:text="@string/buy_truck" />
+    </LinearLayout>
+
+</ScrollView>
