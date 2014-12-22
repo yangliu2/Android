@@ -14,6 +14,8 @@ import java.util.Scanner;
 
 public class Person {
 
+    public Person() {}
+
 	private String name = null;
 	private int age = 0;
 	private String charClass = null; // consider removal
@@ -160,15 +162,39 @@ public class Person {
 		birthTime.setTime(setBirth);
 	}
 
-	public void setGunType(String setGunType) {
-		myGun.setType(setGunType);
-	}
+    public void setGun(Gun setGun){
+        myGun = setGun;
+    }
 
-	public String getGunType() {
-		return myGun.getType();
-	}
+    public Gun getGun(){
+        return myGun;
+    }
 
-	public void setCarryWeight(int setCarryWeigh) {
+    public void setCar(Car setCar){
+        myCar = setCar;
+    }
+
+    public Car getCar(){
+        return myCar;
+    }
+
+    public void setMelee(Skill setMelee){
+        melee = setMelee;
+    }
+
+    public Skill getMelee(){
+        return melee;
+    }
+
+    public void setUnique(Skill setUnique){
+        unique = setUnique;
+    }
+
+    public Skill getUnique(){
+        return unique;
+    }
+
+	public void setCarryWeight(double setCarryWeigh) {
 		carryWeight = setCarryWeigh;
 	}
 
@@ -204,7 +230,7 @@ public class Person {
 		follower = setFollower;
 	}
 
-	public int getFollwer() {
+	public int getFollower() {
 		return follower;
 	}
 
@@ -224,47 +250,10 @@ public class Person {
 		return myFamily.getFamilyName();
 	}
 
-	public void listFamily() {
-		output += "Here is a list of families you are free to join. \n";
-		output += "You cannot leave a family once you join. \n\n";
-
-		// Italian, Smuggling, short-blade (bleeding effect), gladiator (ignores
-		// self-damage, double damage for short time)
-		output += "1. Cosa Nostra \n The Itallian maifa. Specializes in sumggling. Uses short blade as melee weapon. Unique skills is Gladiator. \n\n";
-
-		// US, extortion, MMA (close combat), tommy guns (mass damage, low
-		// accuracy)
-		output += "2. Black Hand \n The United States mafia. Specializes in exortion. Uses mixed martial arts for close combat. Unique weapon is Tommy gun.\n\n";
-
-		// China, prostitution, wing-chun (fast attacks), mass-rush with steel
-		// sticks (burst damage, cooldown)
-		output += "3. Triad \n The Chinese mafia. Specializes in prostituion. Uses Wing Chun for close combat. Unique ability is mass ruch.\n\n";
-
-		// Mexican, drugs, boxing (medium intensity), wild call (mass
-		// reinforcement, restore HP, cooldown)
-		output += "4. Cartel \n The Mexican mafia. Specializes in dealing drugs. Uses boxing for close combat. Unique ability is wild call.\n\n";
-
-		// Brazilian, kidnaping, Brazilian jiu-jitsu (breaking hard hits), human
-		// shielding (high defense)
-		output += "5. Amigos \n The Brazillian mafia. Speciallizes in kidnaping. Uses Jiu Jitsu for close combat. Unique ability is human shield. \n\n";
-
-		// Albanian, human trafficking, wrestling (close combat advantage),
-		// disguise
-		output += "6. Shqiptare \n The Albanian mafia. Speciallizes in human trafficking. Uses wrestling for close combat. Unique ability is disguse. \n\n";
-
-		// Russian, bank robbery, Sambo (hard hitting), AK-47 (increase
-		// accuracy, consistent damage)
-		output += "7. Bratva \n The Russian mafia. Speciallizes in bank robbery. Uses Sambo for close combat. Unique weapon is AK-47. \n\n";
-
-		// Japan, Assassination, ninja (cause enemy to miss, high evade),
-		// sniping (highest single damage, long cooldown)
-		output += "8. Yakuza \n The Japanese mafia. Speciallizes in assassination. Use Ninja as close combat. Unique ability is sniping. \n";
-	}
-
-	public void joinFamily(int familyIndex) {
+    public void joinFamily(int familyIndex) {
 		checkAvailable();
 
-		if (alive && !inJail && !busy) {
+		if (available) {
 
 			// only allow joining if not in a family
 			if (family.equals("none")) {
@@ -281,27 +270,15 @@ public class Person {
 				output += "You already have a family";
 			}
 		} else {
-			notAvaliable("join family");
+			notAvailable("join family");
 		}
 		save();
-	}
-
-	public void listSkill() {
-		output += "Family \t\t Close combat \t Special ability \n\n";
-		output += "CosaNostra \t Short blade \t Gladiator \n";
-		output += "BlackHand \t MMA \t\t TommyGun \n";
-		output += "Triad \t\t Wing chun \t MassRush \n";
-		output += "Cartel \t\t Boxing \t WildCall \n";
-		output += "Amigos \t\t Jiu jitsu \t HumanShield \n";
-		output += "Shqiptare \t Wrestling \t Disguise \n";
-		output += "Bratva \t\t Sambo \t\t AK-47 \n";
-		output += "Yakuza \t\t Ninja \t\t Snipe \n";
 	}
 
 	public void practiceSkills() {
 		checkAvailable();
 
-		if (alive && !inJail && !busy && energy > 50) {
+		if (available && energy > 50) {
 			if (!melee.getType().equals("none")) {
 				output += "You started practicing " + melee.getType() + " and "
 						+ unique.getType() + ".\n";
@@ -321,14 +298,14 @@ public class Person {
 		} else if (energy < 80) {
 			output = "You are too tired to practice any skills.\n";
 		} else {
-			notAvaliable("practice skill");
+			notAvailable("practice skill");
 		}
 		save();
 	}
 
 	public void doFavor() {
 		checkAvailable();
-		if (alive && !inJail && !busy) {
+		if (available) {
 
 			// help to do favors. need to change the favor vairable to the
 			// number of cases
@@ -379,7 +356,7 @@ public class Person {
 				break;
 			}
 		} else {
-			notAvaliable("do favor");
+			notAvailable("do favor");
 		}
 		save();
 	}
@@ -398,7 +375,7 @@ public class Person {
 
 			switch (randomNumber(1, favor)) {
 			case 1:
-				output += "Dirty Old Bum Restaruant is looking for waiters. \n";
+				output += "Dirty Old Bum Restaurant is looking for waiters. \n";
 				setWorkTime(convertToMS(1), currentTime);
 				energy = energy - 50;
 				increase = workFactor * 12;
@@ -444,7 +421,7 @@ public class Person {
 		} else if (energy < 50) {
 			output += "You are too tired to work. \n";
 		} else {
-			notAvaliable("work");
+			notAvailable("work");
 		}
 		save();
 	}
@@ -452,6 +429,16 @@ public class Person {
 	// take money from store
 	public void robStore() {
 
+        checkAvailable();
+        Robbery robStore = new Robbery(this);
+        if (available){
+            output += robStore.execute();
+        } else {
+            notAvailable("rob store");
+        }
+        save();
+
+        /*
 		checkAvailable();
 		int successChance = randomNumber(
 				1 + melee.getLevel() + unique.getLevel(), 100);
@@ -499,9 +486,10 @@ public class Person {
 			}
 			setWorkTime(convertToMS(1), currentTime);
 		} else {
-			notAvaliable("rob store");
+			notAvailable("rob store");
 		}
 		save();
+        */
 
 	}
 
@@ -540,7 +528,7 @@ public class Person {
 		} else if (bullet < 6) {
 			output = "You need at least 6 bullets.\n";
 		} else {
-			notAvaliable("heist");
+			notAvailable("heist");
 		}
 		save();
 	}
@@ -594,7 +582,7 @@ public class Person {
 		} else if (follower < 4) {
 			output += "You need at least 4 followers to rob a bank.\n";
 		} else {
-			notAvaliable("rob bank");
+			notAvailable("rob bank");
 		}
 		save();
 	}
@@ -642,7 +630,7 @@ public class Person {
 		} else if (!myGun.getType().equals("sniper")) {
 			output += "You need a sniper gun to assassinate. \n";
 		} else {
-			notAvaliable("assassination");
+			notAvailable("assassination");
 		}
 		save();
 	}
@@ -684,7 +672,7 @@ public class Person {
 		} else if (myCar.getSeat() < 5) {
 			output += "You need a car that fits more than 4 people. \n";
 		} else {
-			notAvaliable("smuggling");
+			notAvailable("smuggling");
 		}
 		save();
 	}
@@ -730,7 +718,7 @@ public class Person {
 		} else if (bullet < 100) {
 			output += "You need more bullets. \n";
 		} else {
-			notAvaliable("extortion");
+			notAvailable("extortion");
 		}
 		save();
 	}
@@ -775,13 +763,13 @@ public class Person {
 		} else if (respect < 40000) {
 			output += "People do not respect you.\n";
 		} else {
-			notAvaliable("prostitution");
+			notAvailable("prostitution");
 		}
 		save();
 
 	}
 
-	public void kidnaping() {
+	public void kidnapping() {
 		checkAvailable();
 		int successChance = 0;
 		int taskChance = randomNumber(1, 100);
@@ -789,7 +777,7 @@ public class Person {
 		// Human shield skill increase the chance of extortion
 		if (unique.getType().equals("HumanShield")) {
 			// System.out.println("Your special ability " + unique.getType() +
-			// " was useful for kidnaping.\n");
+			// " was useful for kidnapping.\n");
 			successChance = randomNumber(1 + unique.getLevel() / 2, 100);
 		} else {
 			successChance = randomNumber(1, 100);
@@ -820,7 +808,7 @@ public class Person {
 		} else if (respect < 40000) {
 			output += "Nobody gave you any tip for possible target. \n";
 		} else {
-			notAvaliable("kidnaping");
+			notAvailable("kidnapping");
 		}
 		save();
 
@@ -865,7 +853,7 @@ public class Person {
 		} else if (respect < 4000) {
 			output += "Your guys are just idiots. \n";
 		} else {
-			notAvaliable("huamn trafficking");
+			notAvailable("huamn trafficking");
 		}
 		save();
 	}
@@ -909,7 +897,7 @@ public class Person {
 		} else if (respect < 4000) {
 			output += "The next family is taking your territories. \n";
 		} else {
-			notAvaliable("drug dealing");
+			notAvailable("drug dealing");
 		}
 		save();
 	}
@@ -968,7 +956,7 @@ public class Person {
 			money = money - will;
 			karma = karma + will;
 		} else {
-			notAvaliable("donation");
+			notAvailable("donation");
 		}
 		save();
 	}
@@ -987,7 +975,7 @@ public class Person {
 		} else if ((carryWeight + number) > weight) {
 			output = "You can't carry that many bullets.\n";
 		} else {
-			notAvaliable("buying bullet");
+			notAvailable("buying bullet");
 		}
 		save();
 	}
@@ -1011,7 +999,7 @@ public class Person {
 		} else if (money == 0) {
 			output += "You don't have any money.\n";
 		} else {
-			notAvaliable("buy blood");
+			notAvailable("buy blood");
 		}
 		save();
 	}
@@ -1039,7 +1027,7 @@ public class Person {
 		} else if ((carryWeight + newGun.getWeight()) > weight) {
 			output = "You are carrying too much weight.\n";
 		} else {
-			notAvaliable("buying gun");
+			notAvailable("buying gun");
 		}
 		save();
 	}
@@ -1062,7 +1050,7 @@ public class Person {
 			output = "You don't have enough money.\n";
 			output += "The vehicle cost $" + newCar.getCost() + "\n";
 		} else {
-			notAvaliable("buying car");
+			notAvailable("buying car");
 		}
 		save();
 	}
@@ -1147,7 +1135,7 @@ public class Person {
 				output += "Storing has a problem.\n";
 			}
 		} else {
-			notAvaliable("storing");
+			notAvailable("storing");
 		}
 		save();
 
@@ -1216,7 +1204,7 @@ public class Person {
 				output += "Problem with retrieving.";
 			}
 		} else {
-			notAvaliable("retrieving");
+			notAvailable("retrieving");
 		}
 		save();
 	}
@@ -1434,7 +1422,7 @@ public class Person {
 		}
 	}
 
-	public void notAvaliable(String functionName) {
+	public void notAvailable(String functionName) {
 		if (!alive) {
 			output += "You are still dead.\n";
 			checkLive();
@@ -1519,13 +1507,14 @@ public class Person {
 		}
 	}
 
-	public void setWorkTime(long setWorkTime, long setStartTime) {
+	public String setWorkTime(long setWorkTime, long setStartTime) {
 		busy = true;
 		workTime = setWorkTime;
 		workStartTime = setStartTime;
 
 		output += "Your need " + workTime / 1000 / 60
 				+ " minutes until you can do you next task.\n";
+        return output;
 	}
 
 	public void setJailTime(long setJailTime, long setInJailTime) {

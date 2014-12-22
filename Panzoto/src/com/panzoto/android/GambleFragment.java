@@ -52,7 +52,7 @@ public class GambleFragment extends Fragment implements OnClickListener {
 		switch (v.getId()) {
 		
 		case R.id.look_family:
-			me.listFamily();
+			//me.listFamily();
 			activityType = 1;
 			break;
 		case R.id.play_dice:

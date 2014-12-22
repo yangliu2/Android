@@ -57,6 +57,20 @@ public class Skill {
 		return cost;
 	}
 
+    public String listSkill() {
+        String output = "";
+        output += "Family \t\t Close combat \t Special ability \n\n";
+        output += "CosaNostra \t Short blade \t Gladiator \n";
+        output += "BlackHand \t MMA \t\t TommyGun \n";
+        output += "Triad \t\t Wing chun \t MassRush \n";
+        output += "Cartel \t\t Boxing \t WildCall \n";
+        output += "Amigos \t\t Jiu jitsu \t HumanShield \n";
+        output += "Shqiptare \t Wrestling \t Disguise \n";
+        output += "Bratva \t\t Sambo \t\t AK-47 \n";
+        output += "Yakuza \t\t Ninja \t\t Snipe \n";
+        return output;
+    }
+
 	public String checkLevel() {
 		String output = "";
 		while (xp > Math.pow(level, 2) * 10) {

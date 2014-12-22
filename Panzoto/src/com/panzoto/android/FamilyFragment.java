@@ -5,8 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import com.panzoto.android.R;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -88,11 +86,14 @@ public class FamilyFragment extends Fragment implements OnClickListener {
 		switch (v.getId()) {
 		
 		case R.id.look_family:
-			me.listFamily();
+            Family family = new Family();
+			message += family.listFamily();
+            System.out.println(message);
 			activityType = 1;
 			break;
 		case R.id.list_skill:
-			me.listSkill();
+            Skill skill = new Skill();
+            message += skill.listSkill();
 			activityType = 1;
 			break;
 		case R.id.practice_skill:
@@ -116,7 +117,7 @@ public class FamilyFragment extends Fragment implements OnClickListener {
 			activityType = 1;
 			break;
 		case R.id.kidnaping:
-			me.kidnaping();
+			me.kidnapping();
 			activityType = 1;
 			break;
 		case R.id.humanTrafficking:
@@ -139,7 +140,7 @@ public class FamilyFragment extends Fragment implements OnClickListener {
 		if (activityType == 1) {
 			intent = new Intent(getActivity(), DisplayMessageActivity.class);
 			saveProfile();
-			message = me.getOutput();
+			message += me.getOutput();
 			intent.putExtra(MainActivity.EXTRA_MESSAGE, message);
 			startActivity(intent);
 		}
