@@ -20,7 +20,7 @@ public class RandomEvent {
         myGun = newPerson.getGun();
     }
 
-    public Person displayEvent(int dangerFactor) {
+    public String displayEvent(int dangerFactor) {
 
         String output = "";
         long currentTime = new Date().getTime();
@@ -62,11 +62,10 @@ public class RandomEvent {
             if (unique.getType().equals("Disguise")) {
                 output += "You managed to reduce jail time by using "
                         + unique.getType() + " \n";
-                person.setJailTime(Tools.convertToMS(1 - unique.getLevel() / 100),
-                        currentTime);
+                person.setJailTime(1);
             } else {
                 output += "You did not run fast enough. Police got you in jail.\n";
-                person.setJailTime(Tools.convertToMS(1), currentTime);
+                person.setJailTime(1);
             }
         }
 
@@ -122,10 +121,7 @@ public class RandomEvent {
             person.setRespect(person.getRespect() - 500);
             output += "Some one high up must really like you.\n";
         }
-
-        person.setOutput(person.getOutput() + output);
-        return person;
+        return output;
     }
-
 
 }
