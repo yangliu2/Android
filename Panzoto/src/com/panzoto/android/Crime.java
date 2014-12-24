@@ -129,12 +129,12 @@ public class Crime {
             } else {
                 person.save();
             }
-            output += person.setWorkTime(1);
+            person.setWorkTime(1);
         } else {
             person.notAvailable(functionName);
-            output += person.getOutput();
-        }
 
+        }
+        output += person.getOutput();
         return output;
     }
 }
