@@ -56,7 +56,8 @@ public class SettingsFragment extends Fragment implements OnClickListener {
  		switch (v.getId()) {
  		case R.id.new_profile:
  			me.createPerson("You");
- 		    message = "created a new character\n";
+ 		    message = "Created a new character\n";
+            me.status();
 			activityType = 1;
 			break;
  		case R.id.add_money:
@@ -72,7 +73,7 @@ public class SettingsFragment extends Fragment implements OnClickListener {
 		if (activityType == 1) {
 			intent = new Intent(getActivity(), DisplayMessageActivity.class);
 			saveProfile();
-			message = me.getOutput();
+			message += me.getOutput();
 			intent.putExtra(MainActivity.EXTRA_MESSAGE, message);
 			startActivity(intent);
 		}

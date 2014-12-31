@@ -38,14 +38,13 @@ public class Person {
     private String family = "none";
     private Skill melee = new Skill();
     private Skill unique = new Skill();
-    private boolean inJail = false; // no outside access
-
-    private long currentTime = 0; // no outside access
-    private long inJailTime = 0; // no outside access
-    private long jailTime = 0; // no outside access
-    private boolean busy = false; // no outside access
-    private long workTime = 0; // no outside access
-    private long workStartTime = 0; // no outside access
+    private boolean inJail = false;
+    private long currentTime = 0;
+    private long inJailTime = 0;
+    private long jailTime = 0;
+    private boolean busy = false;
+    private long workTime = 0;
+    private long workStartTime = 0;
 
     private String output = "";
 
@@ -490,7 +489,9 @@ public class Person {
     }
 
     public void takeDamage(int damage) {
-        damage = damage / myGun.getPower();
+        if (!myGun.getType().equals("none")) {
+            damage = damage / myGun.getPower();
+        }
         HP = HP - randomNumber(0, damage) + follower;
     }
 
@@ -537,19 +538,25 @@ public class Person {
     public void robStore() {
 
         Crime crime = new Crime(this);
+        crime.setFunctionName("RobStore");
         crime.setMeleeEffect(1);
         crime.setUniqueEffect(1);
+        crime.setBulletsNeeded(0);
+        crime.setGunNeeded("none");
         crime.setTakeDamage(20);
         crime.setDangerFactor(1);
         crime.setMoneyIncrease(50);
         crime.setRespectIncrease(20);
         crime.setKarmaDecrease(20);
+        crime.setWorkTime(1);
         crime.setInitialMessage("You entered a liquor store and demanded money.");
         crime.setResponseOne("The store owner fought back and you got hurt.");
         crime.setGetAway("You got away with some cash.");
         crime.setFailed("Being such an amateur, you did not get any money.");
         crime.setDied("You did not make it.");
         output += crime.execute();
+        save();
+
         /*
         checkAvailable();
         int successChance = calcChance(1, 1);
@@ -591,6 +598,29 @@ public class Person {
     }
 
     public void heist() {
+
+        Crime crime = new Crime(this);
+        crime.setFunctionName("Heist");
+        crime.setMeleeEffect(2);
+        crime.setUniqueEffect(2);
+        crime.setBulletsNeeded(6);
+        crime.setGunNeeded("none");
+        crime.setTakeDamage(50);
+        crime.setDangerFactor(2);
+        crime.setMoneyIncrease(120);
+        crime.setRespectIncrease(50);
+        crime.setKarmaDecrease(50);
+        crime.setWorkTime(2);
+        crime.setInitialMessage("You found a buddy and try to get some unfortunate soul on the " +
+                "road to give you some money.");
+        crime.setResponseOne("That guy fought back.");
+        crime.setGetAway("You took some money from the pour soul.");
+        crime.setFailed("In the mist of the haste. Money was not grabbed.");
+        crime.setDied("You were left by your partner to die.");
+        output += crime.execute();
+        save();
+
+        /*
         checkAvailable();
         int successChance = calcChance(2, 2);
         int taskChance = randomNumber(1, 100);
@@ -621,9 +651,34 @@ public class Person {
             notAvailable("heist");
         }
         save();
+        */
     }
 
     public void robBank() {
+
+        Crime crime = new Crime(this);
+        crime.setFunctionName("RobBank");
+        crime.setMeleeEffect(1);
+        crime.setUniqueEffect(2);
+        crime.setBulletsNeeded(36);
+        crime.setTakeDamage(99);
+        crime.setDangerFactor(3);
+        crime.setMoneyIncrease(1000);
+        crime.setRespectIncrease(200);
+        crime.setKarmaDecrease(200);
+        crime.setGunNeeded("tommy");
+        crime.setSeatNeeded(4);
+        crime.setFollowersNeeded(3);
+        crime.setWorkTime(3);
+        crime.setInitialMessage("You found 3 more guys to help you rob a bank");
+        crime.setResponseOne("Security guards called for police.");
+        crime.setGetAway("You got some money from the local bank.");
+        crime.setFailed("The bank have top notch security.");
+        crime.setDied("SWAT team shoot through your heart.");
+        output += crime.execute();
+        save();
+
+        /*
         checkAvailable();
         int successChance = calcChance(1, 2);
         int taskChance = randomNumber(1, 100);
@@ -663,6 +718,7 @@ public class Person {
             notAvailable("rob bank");
         }
         save();
+        */
     }
 
     public void assassination() {
@@ -1071,16 +1127,16 @@ public class Person {
         oldGun.loadProperties(myGun.getType());
         Gun newGun = new Gun();
         newGun.loadProperties(gunName);
-        if (!myGun.getType().equals(gunName)
+        if (available && !myGun.getType().equals(gunName)
                 && (carryWeight + newGun.getWeight()) < weight
-                && money > newGun.getCost() && available) {
+                && money > newGun.getCost()) {
             myGun.loadProperties(gunName);
             money = money - myGun.getCost();
             carryWeight = carryWeight - oldGun.getWeight();
             carryWeight = carryWeight + myGun.getWeight();
-            output += "You bought a " + gunName + ".\n";
+            output += "You bought a " + gunName + " gun.\n";
         } else if (myGun.getType().equals(gunName)) {
-            output += "You have a " + gunName + " already.\n";
+            output += "You have a " + gunName + " gun already.\n";
         } else if (money < newGun.getCost()) {
             output += "You don't have enough money.\n";
             output += "The gun cost $" + newGun.getCost() + "\n";
@@ -1099,8 +1155,7 @@ public class Person {
         oldCar.loadProperties(myCar.getType());
         Car newCar = new Car();
         newCar.loadProperties(carType);
-        if (!myCar.getType().equals(carType) && money > newCar.getCost()
-                && available) {
+        if (available && !myCar.getType().equals(carType) && money > newCar.getCost()) {
             myCar.loadProperties(carType);
             money = money - myCar.getCost();
             output += "You bought a " + carType + ".\n";
@@ -1564,7 +1619,7 @@ public class Person {
         inJailTime = convertToMS(minutes);
         jailTime = new Date().getTime();
 
-        output += "Your need " + jailTime / 1000 / 60
+        output += "Your need " + inJailTime / 1000 / 60
                 + " minutes until you can get out of jail.\n";
     }
 
@@ -1785,7 +1840,9 @@ public class Person {
         respect = 0;
         rank = "";
         follower = 0;
-        available = true;
+        family = "none";
+        unique.setType("none");
+        melee.setType("none");
     }
 
 }
