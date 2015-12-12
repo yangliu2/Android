@@ -133,7 +133,7 @@ public class SettingsFragment extends Fragment implements OnClickListener {
 		// load profile with the read buffer
 		stringBuffer = loadFile("profile.dat");
 		me.load(stringBuffer);
-		me.status();
+		//me.status();
 		return me.getOutput();
 	}
 

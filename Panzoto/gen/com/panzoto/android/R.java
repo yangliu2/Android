@@ -855,7 +855,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int spinnerDropDownItemStyle=0x7f010064;
-        /**  Display mode for spinner options. 
+        /**  DisplayActivity mode for spinner options.
          <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -3679,7 +3679,7 @@ containing a value of this type.
            <tr><td><code>{@link #Spinner_popupPromptView com.panzoto.android:popupPromptView}</code></td><td> Reference to a layout to use for displaying a prompt in the dropdown for
              spinnerMode="dropdown".</td></tr>
            <tr><td><code>{@link #Spinner_prompt com.panzoto.android:prompt}</code></td><td> The prompt to display when the spinner's dialog is shown.</td></tr>
-           <tr><td><code>{@link #Spinner_spinnerMode com.panzoto.android:spinnerMode}</code></td><td> Display mode for spinner options.</td></tr>
+           <tr><td><code>{@link #Spinner_spinnerMode com.panzoto.android:spinnerMode}</code></td><td> DisplayActivity mode for spinner options.</td></tr>
            </table>
            @see #Spinner_android_dropDownHorizontalOffset
            @see #Spinner_android_dropDownSelector
@@ -3799,7 +3799,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /**
           <p>
           @attr description
-           Display mode for spinner options. 
+           DisplayActivity mode for spinner options.
 
 
           <p>Must be one of the following constant values.</p>

@@ -1,7 +1,4 @@
 INDEX VERSION 1.126+D:\UserData\Dropbox\Android\.metadata\.plugins\org.eclipse.jdt.core
-760182283.index
-1817472664.index
 1887684954.index
 3241303241.index
-1415199595.index
 1284074322.index

@@ -130,7 +130,7 @@ public class MainActivity extends FragmentActivity implements
 		}
 
 		if (id == R.id.action_character) {
-			Intent intent = new Intent(this, DisplayMessageActivity.class);
+			Intent intent = new Intent(this, DisplayActivity.class);
 			String message = "Checking status...\n";
 			message = loadProfile(message);
 			intent.putExtra(MainActivity.EXTRA_MESSAGE, message);

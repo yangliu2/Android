@@ -311,7 +311,6 @@ public class Person {
         this.workStartTime = workStartTime;
     }
 
-
     public void joinFamily(int familyIndex) {
         checkAvailable();
 
@@ -365,11 +364,19 @@ public class Person {
         save();
     }
 
+    public void favorReward(int dangerFactor, int workTime, int karmaIncrease, int respectIncrease) {
+        RandomEvent event = new RandomEvent(this);
+        event.displayEvent(dangerFactor);
+        setWorkTime(workTime);
+        increaseKarma(karmaIncrease);
+        increaseRespect(respectIncrease);
+    }
+
     public void doFavor() {
         checkAvailable();
         if (available) {
 
-            // help to do favors. need to change the favor vairable to the
+            // help to do favors. need to change the favor variable to the
             // number of cases
             int favor = 5;
 
@@ -380,38 +387,23 @@ public class Person {
             switch (randomNumber(1, favor)) {
                 case 1:
                     output += "Johnny asked you to talk to his landlord into letting his dog to stay in his apartment. You promised to take care of it.\n";
-                    randomEvent(1);
-                    setWorkTime(1);
-                    karma += 20;
-                    respect += 20;
+                    favorReward(1, 1, 20, 20);
                     break;
                 case 2:
                     output += "Jeff's daugher was beat up by a bunch of punks. He asked you to teach them a lesson.\n";
-                    randomEvent(1);
-                    setWorkTime(1);
-                    karma += 50;
-                    respect += 50;
+                    favorReward(1, 1, 50, 50);
                     break;
                 case 3:
                     output += "Mark's father was robbed and stabbed. He wants to revenge his father's death.\n";
-                    randomEvent(2);
-                    setWorkTime(1);
-                    karma += 100;
-                    respect += 100;
+                    favorReward(2, 1, 100, 100);
                     break;
                 case 4:
                     output += "Your god son ask you to help him get a job. The only problem is that you have to convince his boss. No big deal, you made his boss an offer.\n";
-                    randomEvent(2);
-                    setWorkTime(1);
-                    karma += 110;
-                    respect += 110;
+                    favorReward(2, 1, 110, 110);
                     break;
                 case 5:
                     output += "You were asked for a favor on your daughter's wedding day. An offer you cannot refuse. People do not take this lightly.\n";
-                    randomEvent(2);
-                    setWorkTime(1);
-                    karma += 200;
-                    respect += 200;
+                    favorReward(2, 1, 200, 200);
                     break;
                 default:
                     System.out.println("Do favor has a problem.\n");
@@ -423,13 +415,22 @@ public class Person {
         save();
     }
 
+    public void decreaseEnergy(int energyDecrease) {
+        energy = energy - randomNumber(0, energyDecrease);
+    }
+
+    public void rewardLabor(int workTime, int moneyIncrease, int energyDecrease) {
+        setWorkTime(workTime);
+        increaseMoney(moneyIncrease);
+        decreaseEnergy(energyDecrease);
+        output += "You got $" + moneyIncrease + " for your service.\n";
+    }
+
     // work for money when crime doesn't pay
     public void labor() {
 
         checkAvailable();
         if (available && energy >= 50) {
-            int increase = 0;
-            int workFactor = 1;
             output += "You are tight on cash and need to make some money. \n";
             // work for money. need to change the work variable to the
             // number of types of work
@@ -438,43 +439,23 @@ public class Person {
             switch (randomNumber(1, favor)) {
                 case 1:
                     output += "Dirty Old Bum Restaurant is looking for waiters. \n";
-                    setWorkTime(1);
-                    energy = energy - 50;
-                    increase = workFactor * 12;
-                    money += increase;
-                    output += "You got $" + increase + " for your service.\n";
+                    rewardLabor(1, 12, 50);
                     break;
                 case 2:
                     output += "Mom took petty on you and gave you some money.\n";
-                    setWorkTime(1);
-                    energy = energy - 50;
-                    increase += workFactor * 6;
-                    money += increase;
-                    output += "You got $" + increase + " for your service.\n";
+                    rewardLabor(1, 6, 50);
                     break;
                 case 3:
-                    output += "Zoombie Hospital need someone to carry bodies. \n";
-                    setWorkTime(1);
-                    energy = energy - 50;
-                    increase += workFactor * 13;
-                    money += increase;
-                    output += "You got $" + increase + " for your service.\n";
+                    output += "Zombie Hospital need someone to carry bodies. \n";
+                    rewardLabor(1, 13, 50);
                     break;
                 case 4:
                     output += "Eat Poison Pharmaceuticals is looking for testing subjects. \n";
-                    setWorkTime(1);
-                    energy = energy - 50;
-                    increase += workFactor * 4;
-                    money += increase;
-                    output += "You got $" + increase + " for your service.\n";
+                    rewardLabor(1, 4, 50);
                     break;
                 case 5:
                     output += "Begging for change seems like a good career option. \n";
-                    setWorkTime(1);
-                    energy = energy - 50;
-                    increase += workFactor * 3;
-                    money += increase;
-                    output += "You got $" + increase + " for your service.\n";
+                    rewardLabor(1, 3, 50);
                     break;
                 default:
                     System.out.println("Do favor has a problem.\n");
@@ -507,6 +488,10 @@ public class Person {
 
     public void increaseRespect(int increase) {
         respect = respect + randomNumber(0, increase);
+    }
+
+    public void increaseKarma(int increase) {
+        karma = karma + randomNumber(0, increase);
     }
 
     public void decreaseKarma(int decrease) {
@@ -1489,17 +1474,17 @@ public class Person {
     public void status() {
         checkStatus();
 
-        output = "Name: " + capWord(name) + " | Age: " + age + " | Class: "
-                + charClass + " | Height: " + height + " cm" + "\n"
-                + "Weight: " + weight + " lb" + " | HP: " + HP + " | Energy: "
-                + energy + " | Karma: " + karma + "\nFollower: " + follower
-                + " | Respect: " + respect + " | Rank: " + rank + "\n"
-                + "Bullets: " + bullet + " | Money: " + money + " | Gun: "
-                + capWord(myGun.getType()) + " | Car: "
-                + capWord(myCar.getType()) + " | Bag: " + (int) carryWeight
-                + " lb" + "\n" + "Family: " + family + " | Melee: "
-                + melee.getType() + " | Special: " + unique.getType()
-                + " | Available: " + available + "\n";
+        output = "Name: " + capWord(name) + "\n" + "Age: " + age + "\n" + "Class: "
+                + charClass + "\n" + "Height: " + height + " cm" + "\n"
+                + "Weight: " + weight + " lb" + "\nHP: " + HP + "\n" + "Energy: "
+                + energy + "\nKarma: " + karma + "\nFollower: " + follower
+                + "\nRespect: " + respect + "\nRank: " + rank + "\n"
+                + "Bullets: " + bullet + "\nMoney: " + money + "\nGun: "
+                + capWord(myGun.getType()) + "\nCar: "
+                + capWord(myCar.getType()) + "\nBag: " + (int) carryWeight
+                + " lb" + "\n" + "Family: " + capWord(family) + "\nMelee: "
+                + capWord(melee.getType()) + "\nSpecial: " + capWord(unique.getType())
+                + "\nAvailable: " + available + "\n";
     }
 
     public void updateTime() {
@@ -1541,10 +1526,7 @@ public class Person {
             available = false;
         } else if (busy) {
             available = false;
-        } else if (inJail) {
-            available = false;
-        } else
-            available = true;
+        } else available = !inJail;
     }
 
     public void checkBlood() {
