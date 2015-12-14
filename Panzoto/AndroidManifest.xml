@@ -57,7 +57,7 @@
             android:label="@string/title_activity_play_dice" >
         </activity>
         <activity
-            android:name=".GambleFragment"
+            android:name=".GamingFragment"
             android:label="@string/title_activity_gamble" >
         </activity>
         <activity
@@ -70,7 +70,7 @@
         </activity>
         <activity
             android:name=".DisplayActivity"
-            android:label="@string/title_activity_show_horse" >
+            android:label="@string/title_activity_display" >
         </activity>
     </application>
 

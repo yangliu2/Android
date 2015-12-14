@@ -57,7 +57,7 @@
             android:label="@string/title_activity_play_dice" >
         </activity>
         <activity
-            android:name=".GambleFragment"
+            android:name=".GamingFragment"
             android:label="@string/title_activity_gamble" >
         </activity>
         <activity

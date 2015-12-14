@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class GambleFragment extends Fragment implements OnClickListener {
+public class GamingFragment extends Fragment implements OnClickListener {
 
     Person me = new Person();
 

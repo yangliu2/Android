@@ -138,7 +138,7 @@ public class FamilyFragment extends Fragment implements OnClickListener {
 
 		// load simple activity
 		if (activityType == 1) {
-			intent = new Intent(getActivity(), DisplayMessageActivity.class);
+			intent = new Intent(getActivity(), DisplayActivity.class);
 			saveProfile();
 			message += me.getOutput();
 			intent.putExtra(MainActivity.EXTRA_MESSAGE, message);

@@ -28,6 +28,9 @@ public class DisplayActivity extends Activity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
 
+        // hide toolbar logo
+        getActionBar().setIcon(android.R.color.transparent);
+
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 

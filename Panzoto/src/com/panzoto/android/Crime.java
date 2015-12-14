@@ -16,6 +16,7 @@ public class Crime {
     private int uniqueEffect = 0;
     private int bulletsNeeded = 0;
     private String gunNeeded = "none";
+    private String uniqueSkillNeeded ="none";
     private int seatNeeded = 0;
     private int followersNeeded = 0;
     private int moneyIncrease = 0;
@@ -56,6 +57,10 @@ public class Crime {
 
     public void setGunNeeded(String gunNeeded) {
         this.gunNeeded = gunNeeded;
+    }
+
+    public void setUniqueSkillNeededNeeded(String uniqueSkillNeeded) {
+        this.uniqueSkillNeeded = uniqueSkillNeeded;
     }
 
     public void setSeatNeeded(int seatNeeded) {
@@ -119,11 +124,12 @@ public class Crime {
         int successChance = Tools.randomNumber(1 + melee.getLevel() / meleeEffect
                 + unique.getLevel() / uniqueEffect, 100);
 
+        System.out.println("Success chance is: " + successChance);
         return successChance;
     }
 
-    public int addChance(String uniqueSkill, int successChance) {
-        if (unique.getType().equals(uniqueSkill)) {
+    public int addChance(String uniqueSkillNeeded, int successChance) {
+        if (unique.getType().equals(uniqueSkillNeeded)) {
             successChance += successChance / 3;
         }
         return successChance;
@@ -133,10 +139,13 @@ public class Crime {
         String output = "";
 
         person.checkAvailable();
-        calcChance(meleeEffect, uniqueEffect);
+        successChance = calcChance(meleeEffect, uniqueEffect);
+        //System.out.println("Chance after calcChance function " + successChance);
+        successChance = addChance(uniqueSkillNeeded, successChance);
+        //System.out.println("Chance after addChance function " + successChance);
 
         // if no particular gun is required then any gun would be fine
-        if (gunNeeded.equals("none")){
+        if (gunNeeded.equals("none")) {
             gunNeeded = person.getGun().getType();
         }
 
@@ -149,6 +158,9 @@ public class Crime {
             person.takeDamage(takeDamage);
             RandomEvent event = new RandomEvent(person);
             output += event.displayEvent(dangerFactor);
+
+            // check success chance
+            System.out.println("Success chance: " + successChance + " taskChance: " + taskChance);
 
             person.checkLive();
             if (person.getAlive() && successChance >= taskChance) {

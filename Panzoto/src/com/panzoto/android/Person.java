@@ -339,7 +339,7 @@ public class Person {
     public void practiceSkills() {
         checkAvailable();
 
-        if (available && energy > 50) {
+        if (available && energy > 80) {
             if (!melee.getType().equals("none")) {
                 output += "You started practicing " + melee.getType() + " and "
                         + unique.getType() + ".\n";
@@ -771,7 +771,7 @@ public class Person {
             setWorkTime(3);
 
         } else if (myCar.getSeat() < carSeatNeeded) {
-            output += "You need a car that fits at least" + carSeatNeeded + " people. \n";
+            output += "You need a car that fits at least " + carSeatNeeded + " people. \n";
         } else {
             notAvailable("smuggling");
         }
@@ -1526,7 +1526,8 @@ public class Person {
             available = false;
         } else if (busy) {
             available = false;
-        } else available = !inJail;
+        } else
+            available = !inJail;
     }
 
     public void checkBlood() {
@@ -1540,6 +1541,8 @@ public class Person {
     public void checkEnergy() {
         if (energy > 100)
             energy = 100;
+        else if (energy < 100)
+            energy = 0;
         else if (HP < 0) {
             HP = 0;
         }

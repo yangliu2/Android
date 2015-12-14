@@ -36,12 +36,15 @@ public class MainActivity extends FragmentActivity implements
 	private Timer myTimer;
 
 	// Tab titles
-	private String[] tabs = { "Actions", "Family", "Gamble", "Settings" };
+	private String[] tabs = { "Actions", "Family", "Gaming", "Settings" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		// hide toolbar logo
+		getActionBar().setIcon(android.R.color.transparent);
 
 		loadAssetFiles();
 		String message = "";

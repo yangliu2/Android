@@ -26,7 +26,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter implements ActionBar.
             return new FamilyFragment();
         case 2:
             // Status fragment activity
-            return new GambleFragment();
+            return new GamingFragment();
         case 3:
             // Status fragment activity
             return new SettingsFragment();

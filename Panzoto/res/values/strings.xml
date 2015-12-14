@@ -46,15 +46,15 @@
     <string name="new_profile">Create a profile</string>
     <string name="add_money">Let it rain</string>
     <string name="add_respect">I\'m famous</string>
-    <string name="title_activity_display">DisplayActivity</string>
-    <string name="title_activity_buy_gun">BuyGun</string>
-    <string name="title_activity_buy_car">BuyCar</string>
-    <string name="title_activity_buy_bullets">BuyBullets</string>
-    <string name="title_activity_join_family">JoinFamily</string>
-    <string name="title_activity_play_dice">PlayDice</string>
-    <string name="title_activity_gamble">GambleActivity</string>
-    <string name="title_activity_horse_racing">HorseRacing</string>
-    <string name="title_activity_show_horse">ShowHorse</string>
+    <string name="title_activity_display">Message</string>
+    <string name="title_activity_buy_gun">Gun Shop</string>
+    <string name="title_activity_buy_car">Car Shop</string>
+    <string name="title_activity_buy_bullets">Bullets</string>
+    <string name="title_activity_join_family">Join Family</string>
+    <string name="title_activity_play_dice">Play Dice</string>
+    <string name="title_activity_gamble">Gaming</string>
+    <string name="title_activity_horse_racing">Horse Racing</string>
+    <string name="title_activity_show_horse">Race Track</string>
 
 
 </resources>
